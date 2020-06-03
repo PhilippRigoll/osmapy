@@ -37,23 +37,6 @@ The following Features are already implemented:
  * Easy configuration
     * Just one YAML file must be modified
     
-    
-## Installation
-
-Maybe you have to install the  [Build Tools for Visual Studio](https://visualstudio.microsoft.com/downloads/) on Windows.
-
-The editor can be easily installed using pip:
-```
-pip3 install POSM
-``` 
-
-After installation run in the commandline:
-```
-POSM
-```
-
-The configuration file can be found here: [`POSM/config.yaml`](POSM/config.yaml)
-
 ## Small User Hints
 
  - Move around: Right mouse button + Mouse Move
