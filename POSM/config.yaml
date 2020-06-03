@@ -7,7 +7,7 @@ start_zoom: 5
 login_name: OMS_USER
 password:
 slippy_tiles:
-  - name: OpenStreetMaps
+  - name: OpenStreetMap
     urls:
     - http://a.tile.openstreetmap.org/${zoom}/${int_xtile}/${int_ytile}.png
     - http://b.tile.openstreetmap.org/${zoom}/${int_xtile}/${int_ytile}.png

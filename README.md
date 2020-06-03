@@ -1,4 +1,4 @@
-# POSM - Python Editor for OpenStreetMaps
+# POSM - Python Editor for OpenStreetMap
 
 May I introduce you to __POSM__, the Python Editor for [OpenStreetMap](https://www.openstreetmap.org).
 This should become the new state of the art editor for OpenStreetMap.
