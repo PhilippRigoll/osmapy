@@ -44,7 +44,7 @@ Maybe you have to install the  [Build Tools for Visual Studio](https://visualstu
 
 The editor can be easily installed using pip:
 ```
-pip install POSM
+pip3 install POSM
 ``` 
 
 After installation run in the commandline:
