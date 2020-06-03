@@ -4,6 +4,7 @@ setuptools.setup(name="POSM",
                  author="Philipp Rigoll",
                  version="0.1",
                  author_email="philipp@rigoll.de",
+                 url="https://github.com/PhilippRigoll/POSM",
                  packages=setuptools.find_packages(),
                  install_requires=[
                      "numpy",
@@ -15,6 +16,7 @@ setuptools.setup(name="POSM",
                      "requests",
                      "gpxpy"
                  ],
+                 python_requires=">=3.6",
                  entry_points={
                      "console_scripts": ["POSM=POSM.main:main"]
                  })

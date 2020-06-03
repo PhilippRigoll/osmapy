@@ -39,6 +39,9 @@ The following Features are already implemented:
     
     
 ## Installation
+
+Maybe you have to install the  [Build Tools for Visual Studio](https://visualstudio.microsoft.com/downloads/) on Windows.
+
 The editor can be easily installed using pip:
 ```
 pip install POSM
