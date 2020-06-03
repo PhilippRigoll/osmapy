@@ -158,8 +158,6 @@ class TileLoader:
                 # try:
                 if pathlib.Path(path_image).is_file():
                     pic = QPixmap(str(path_image))
-                else:
-                    pic = QPixmap(viewer.asset_error_image)
                 pic = pic.scaled(config.image_size, config.image_size)
                 qpainter.drawTiledPixmap(
                     -offset_x + a * config.image_size + viewer.frameGeometry().width() * 0.5 - config.image_size * 0.5,

@@ -10,7 +10,7 @@ import yaml
 from easydict import EasyDict
 
 path_base = pathlib.Path(__file__).parent
-path_config = path_base / pathlib.Path("../config.yaml")
+path_config = path_base / pathlib.Path("../config.txt")
 
 with open(path_config, "r") as file:
     config = EasyDict(yaml.safe_load(file))

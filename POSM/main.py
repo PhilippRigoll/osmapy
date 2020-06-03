@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-
+import os
 import sys
 from functools import partial
 
@@ -12,7 +12,7 @@ from POSM.ElementsLoader.ElementsLoader import ElementsLoader
 from POSM.Viewer import Viewer
 from POSM.Viewer.ElementViewer import ElementViewer
 from POSM.Viewer.LayerManager import LayerManager
-from POSM.utils.config import config
+from POSM.utils import config
 
 
 class Main(QMainWindow):
@@ -25,7 +25,7 @@ class Main(QMainWindow):
         # All widgets should be destryed when the main window is closed. This the widgets can use the destroyed widget
         # to allow clean up. E.g. save the database of the TileLoader.
         self.setAttribute(QtCore.Qt.WA_DeleteOnClose, True)
-        self.resize(config.window_size[0], config.window_size[1])
+        self.resize(config.config.window_size[0], config.config.window_size[1])
 
         self.elements_loader = ElementsLoader()
 
@@ -58,9 +58,11 @@ class Main(QMainWindow):
         self.toolbar.addAction("Undo Changes", self.viewer.undo_changes)
         self.toolbar.addAction("Create Node", partial(self.viewer.change_mode, "new_node"))
         self.toolbar.addAction("Upload Changes", self.changset_form.show)
+        self.toolbar.addAction("Open Configuration", partial(os.startfile, str(config.path_config)))
         self.addToolBar(self.toolbar)
 
         self.statusBar().showMessage("Welcome to POSM!")
+
 
 def main():
     # Staring point of POSM
@@ -68,6 +70,7 @@ def main():
     main_window = Main()
     main_window.show()
     sys.exit(app.exec_())
+
 
 if __name__ == '__main__':
     main()

@@ -36,6 +36,20 @@ The following Features are already implemented:
     * All the tool windows can be moved around freely
  * Easy configuration
     * Just one YAML file must be modified
+
+## Installation
+
+Maybe you have to install the  [Build Tools for Visual Studio](https://visualstudio.microsoft.com/downloads/) on Windows.
+
+The editor can be easily installed using pip:
+```
+pip3 install POSM
+``` 
+
+After installation run in the commandline:
+```
+POSM
+```
     
 ## Small User Hints
 
