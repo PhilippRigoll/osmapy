@@ -2,6 +2,7 @@
 import os
 import sys
 from functools import partial
+from subprocess import call
 
 from PySide2 import QtCore
 from PySide2.QtWidgets import (QApplication, QMainWindow, QToolBar, QDockWidget)
@@ -58,7 +59,12 @@ class Main(QMainWindow):
         self.toolbar.addAction("Undo Changes", self.viewer.undo_changes)
         self.toolbar.addAction("Create Node", partial(self.viewer.change_mode, "new_node"))
         self.toolbar.addAction("Upload Changes", self.changset_form.show)
-        self.toolbar.addAction("Open Configuration", partial(os.startfile, str(config.path_config)))
+        if os.name == "nt":
+            self.toolbar.addAction("Open Configuration", partial(os.startfile, str(config.path_config)))
+        elif sys.platform == "darwin":
+            self.toolbar.addAction("Open Configuration", partial(call, ["open", str(config.path_config)]))
+        else:
+            self.toolbar.addAction("Open Configuration", partial(call, ["xdg-open", str(config.path_config)]))
         self.addToolBar(self.toolbar)
 
         self.statusBar().showMessage("Welcome to POSM!")
