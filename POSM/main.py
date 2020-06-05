@@ -75,6 +75,7 @@ def main():
     # Staring point of POSM
     app = QApplication()
     app.setWindowIcon(QIcon("./assets/appicon.png"))
+    app.setApplicationName("POSM")
     main_window = Main()
     main_window.show()
     sys.exit(app.exec_())
