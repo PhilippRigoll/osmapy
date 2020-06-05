@@ -15,7 +15,8 @@ setuptools.setup(name="POSM",
                      "easydict",
                      "lxml",
                      "requests",
-                     "gpxpy"
+                     "gpxpy",
+                     "dataclasses"
                  ],
                  python_requires=">=3.6",
                  entry_points={
