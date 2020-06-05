@@ -5,6 +5,7 @@ from functools import partial
 from subprocess import call
 
 from PySide2 import QtCore
+from PySide2.QtGui import QIcon
 from PySide2.QtWidgets import (QApplication, QMainWindow, QToolBar, QDockWidget)
 
 from POSM.Changeset.Changeset import Changeset
@@ -73,6 +74,7 @@ class Main(QMainWindow):
 def main():
     # Staring point of POSM
     app = QApplication()
+    app.setWindowIcon(QIcon("./assets/appicon.png"))
     main_window = Main()
     main_window.show()
     sys.exit(app.exec_())
