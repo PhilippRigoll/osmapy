@@ -22,7 +22,9 @@ class Viewer(QDialog):
     def __init__(self, parent=None):
         super(Viewer, self).__init__()
 
-        self.tile_loader = TileLoader.TileLoader(self, 0)
+        self.tile_loaders = []
+        for config_id in range(len(config.slippy_tiles)):
+            self.tile_loaders.append(TileLoader.TileLoader(self, config_id))
         self.parent = parent
         self.element_viewer = self.parent.element_viewer
 
@@ -40,7 +42,8 @@ class Viewer(QDialog):
 
         self.elements_loader = self.parent.elements_loader
 
-        self.destroyed.connect(self.tile_loader.close)
+        for tile_loader in self.tile_loaders:
+            self.destroyed.connect(tile_loader.close)
 
         path_base = pathlib.Path(__file__).parent
         self.asset_error_image = str(path_base / pathlib.Path("../../assets/error.png"))
@@ -50,7 +53,8 @@ class Viewer(QDialog):
         self.setAcceptDrops(True)  # allow file dropping
 
         self.layers = self.parent.layer_manager
-        self.layers.add_layer(self.tile_loader, config.slippy_tiles[0].name)
+        for config_id, tile_loader in enumerate(self.tile_loaders):
+            self.layers.add_layer(tile_loader, config.slippy_tiles[config_id].name)
         self.layers.add_layer(self.elements_loader, "OSM Nodes")
 
         self.mode = "normal"  # mode for clicking events

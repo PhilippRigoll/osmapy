@@ -153,7 +153,7 @@ class TileLoader:
         for a in range(-num_x, num_x + 1):
             for b in range(-num_y, num_y + 1):
                 tile = Tile.from_num(main_tile.xtile + a, main_tile.ytile + b, main_tile.zoom)
-                path_image = viewer.tile_loader.get_tile(tile)
+                path_image = self.get_tile(tile)
 
                 # try:
                 if pathlib.Path(path_image).is_file():
