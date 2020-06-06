@@ -1,6 +1,6 @@
 # POSM - Python Editor for OpenStreetMap
 
-May I introduce you to __POSM__, the Python Editor for [OpenStreetMap](https://www.openstreetmap.org).
+May I introduce you to __POSM__, the Editor for [OpenStreetMap](https://www.openstreetmap.org) data written in Python.
 This should become the new state of the art editor for OpenStreetMap.
 In contrast to the other common OSM editors this editor is based on Python.
 Python is modern, has a huge user base and is battery-included.
@@ -51,6 +51,13 @@ pip3 install POSM
 After installation run in the commandline:
 ```
 POSM
+```
+
+## Development and Testing
+
+Please use the [sandbox API](https://master.apis.dev.openstreetmap.org) for development and testing. You can set the API url in the configuration file.
+```
+osm_api_url: https://master.apis.dev.openstreetmap.org
 ```
     
 ## Small User Hints
