@@ -38,7 +38,7 @@ class GPXLoader:
         """
         qpainter.setOpacity(alpha)
         qpainter.setBrush(QColor(QtCore.Qt.red))
-        qpainter.setPen(QPen(QColor(QtCore.Qt.red), 2))
+        qpainter.setPen(QPen(QColor(QtCore.Qt.red), 2, QtCore.Qt.SolidLine, QtCore.Qt.RoundCap, QtCore.Qt.RoundJoin))
 
         points = [viewer.xy2screen(point.x, point.y) for point in self.points]
         pointsA = points[:-1]

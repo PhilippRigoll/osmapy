@@ -47,13 +47,13 @@ class Viewer(QDialog):
 
         self.osm_copyright = OSMCopyright()
 
-        self.setAcceptDrops(True)   # allow file dropping
+        self.setAcceptDrops(True)  # allow file dropping
 
         self.layers = self.parent.layer_manager
         self.layers.add_layer(self.tile_loader, config.slippy_tiles[0].name)
         self.layers.add_layer(self.elements_loader, "OSM Nodes")
 
-        self.mode = "normal"    # mode for clicking events
+        self.mode = "normal"  # mode for clicking events
 
     def set_deg(self, lat, lon):
         """ Set center of the view.
@@ -138,7 +138,6 @@ class Viewer(QDialog):
 
         for layer, alpha in self.layers.get_layers():
             layer.draw(self, qpainter, alpha)
-
 
         qpainter.setBrush(QColor(0, 0, 0, 0))
         qpainter.setPen(QPen(QColor(QtCore.Qt.black), 1))
