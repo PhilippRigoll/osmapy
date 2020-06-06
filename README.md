@@ -7,6 +7,8 @@ Python is modern, has a huge user base and is battery-included.
 This allows everyone to contribute to this project.
 POSM uses the widespread, powerful and freshly-looking Qt-framework.
 
+OpenStreetMap is a trademark of the OpenStreetMap Foundation, and is used with their permission. POSM is not endorsed by or affiliated with the OpenStreetMap Foundation.
+
 ![example](examples/example.png)
 
 ![example](examples/example2.png)
