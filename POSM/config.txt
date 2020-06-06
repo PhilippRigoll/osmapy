@@ -1,4 +1,6 @@
 osm_api_url: https://api.openstreetmap.org
+# Please use the sandbox API for development and testing:
+# osm_api_url: https://master.apis.dev.openstreetmap.org
 user_agent: Python Editor v0.1
 window_size: [800, 512]
 start_latitude: 52.518
