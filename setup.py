@@ -16,7 +16,7 @@ setuptools.setup(name="POSM",
                      "lxml",
                      "requests",
                      "gpxpy",
-                     "dataclasses"
+                     "dataclasses;python_version<'3.7'"
                  ],
                  python_requires=">=3.6",
                  entry_points={
