@@ -62,5 +62,5 @@ POSM
  - Drop GPX file into window to load it
 
 # License
-[GNU GPLv3](LICENSE)
+This software is released under the terms of the [GNU GPLv3](LICENSE).
  
