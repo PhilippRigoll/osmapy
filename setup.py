@@ -2,7 +2,7 @@ import setuptools
 
 setuptools.setup(name="osmapy",
                  author="Philipp Rigoll",
-                 version="0.0.1.2",
+                 version="0.0.1.5",
                  author_email="philipp@rigoll.de",
                  url="https://github.com/PhilippRigoll/osmapy",
                  packages=setuptools.find_packages(),

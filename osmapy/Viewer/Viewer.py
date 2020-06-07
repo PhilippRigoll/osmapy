@@ -46,7 +46,7 @@ class Viewer(QDialog):
             self.destroyed.connect(tile_loader.close)
 
         path_base = pathlib.Path(__file__).parent
-        self.asset_error_image = str(path_base / pathlib.Path("../../assets/error.png"))
+        self.asset_error_image = str(path_base / pathlib.Path("../assets/error.png"))
 
         self.osm_copyright = OSMCopyright()
 

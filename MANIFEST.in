@@ -1,5 +1,5 @@
-include assets/error.png
-include assets/appicon.png
+include osmapy/assets/error.png
+include osmapy/assets/appicon.png
 include README.md
 include LICENSE
 include .gitignore

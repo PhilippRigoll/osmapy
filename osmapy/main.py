@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import os
+import pathlib
 import sys
 from functools import partial
 from subprocess import call
@@ -74,7 +75,9 @@ class Main(QMainWindow):
 def main():
     # Staring point of Osmapy
     app = QApplication()
-    app.setWindowIcon(QIcon("./assets/appicon.png"))
+    path_base = pathlib.Path(__file__).parent
+    icon_path = str(path_base / pathlib.Path("assets/appicon.png"))
+    app.setWindowIcon(QIcon(str(icon_path)))
     app.setApplicationName("Osmapy")
     main_window = Main()
     main_window.show()
