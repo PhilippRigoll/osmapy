@@ -7,9 +7,9 @@ from PySide2 import QtCore
 from PySide2.QtGui import QColor, QPen
 from PySide2.QtWidgets import QMessageBox
 
-from POSM.ElementsLoader import Node
-from POSM.utils import calc
-from POSM.utils.config import config
+from Osmapy.ElementsLoader import Node
+from Osmapy.utils import calc
+from Osmapy.utils.config import config
 
 
 class ElementsLoader:

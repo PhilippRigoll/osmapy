@@ -1,19 +1,19 @@
-# POSM - Python Editor for OpenStreetMap
+# Osmapy - Python Editor for OpenStreetMap Data
 
-May I introduce you to __POSM__, the Editor for [OpenStreetMap](https://www.openstreetmap.org) data written in Python.
+May I introduce you to __Osmapy__, the Editor for [OpenStreetMap](https://www.openstreetmap.org) data written in Python.
 This should become the new state of the art editor for OpenStreetMap.
 In contrast to the other common OSM editors this editor is based on Python.
 Python is modern, has a huge user base and is battery-included.
 This allows everyone to contribute to this project.
-POSM uses the widespread, powerful and freshly-looking Qt-framework.
+Osmapy uses the widespread, powerful and freshly-looking Qt-framework.
 
-OpenStreetMap is a trademark of the OpenStreetMap Foundation, and is used with their permission. POSM is not endorsed by or affiliated with the OpenStreetMap Foundation.
+OpenStreetMap is a trademark of the OpenStreetMap Foundation, and is used with their permission. Osmapy is not endorsed by or affiliated with the OpenStreetMap Foundation.
 
 ![example](examples/example.png)
 
 ![example](examples/example2.png)
 
-Currently POSM is more like a prove of concept than a full fledged editor.
+Currently Osmapy is more like a prove of concept than a full fledged editor.
 But it can already be used to modify OSM nodes.
 
 ## Features
@@ -45,12 +45,12 @@ Maybe you have to install the  [Build Tools for Visual Studio](https://visualstu
 
 The editor can be easily installed using pip:
 ```
-pip3 install POSM
+pip3 install Osmapy
 ``` 
 
 After installation run in the commandline:
 ```
-POSM
+Osmapy
 ```
 
 ## Development and Testing

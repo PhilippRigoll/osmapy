@@ -1,10 +1,10 @@
 import setuptools
 
-setuptools.setup(name="POSM",
+setuptools.setup(name="Osmapy",
                  author="Philipp Rigoll",
-                 version="0.1.5",
+                 version="0.0.1.0",
                  author_email="philipp@rigoll.de",
-                 url="https://github.com/PhilippRigoll/POSM",
+                 url="https://github.com/PhilippRigoll/Osmapy",
                  packages=setuptools.find_packages(),
                  include_package_data=True,
                  install_requires=[
@@ -20,5 +20,5 @@ setuptools.setup(name="POSM",
                  ],
                  python_requires=">=3.6",
                  entry_points={
-                     "console_scripts": ["POSM=POSM.main:main"]
+                     "console_scripts": ["Osmapy=Osmapy.main:main"]
                  })

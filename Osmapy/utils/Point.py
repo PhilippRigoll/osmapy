@@ -2,7 +2,7 @@
 
 import numpy as np
 
-from POSM.utils import calc
+from Osmapy.utils import calc
 
 
 class Point:

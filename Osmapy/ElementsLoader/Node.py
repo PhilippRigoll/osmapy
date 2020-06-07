@@ -2,7 +2,7 @@
 
 import lxml.etree as ET
 
-from POSM.utils import calc
+from Osmapy.utils import calc
 
 
 class Node:

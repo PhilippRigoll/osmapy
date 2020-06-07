@@ -2,8 +2,8 @@
 
 import numpy as np
 
-from POSM.utils import calc
-from POSM.utils.config import config
+from Osmapy.utils import calc
+from Osmapy.utils.config import config
 
 
 class Tile:

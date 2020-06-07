@@ -8,22 +8,22 @@ from PySide2 import QtCore
 from PySide2.QtGui import QIcon
 from PySide2.QtWidgets import (QApplication, QMainWindow, QToolBar, QDockWidget)
 
-from POSM.Changeset.Changeset import Changeset
-from POSM.Changeset.ChangesetForm import ChangesetForm
-from POSM.ElementsLoader.ElementsLoader import ElementsLoader
-from POSM.Viewer import Viewer
-from POSM.Viewer.ElementViewer import ElementViewer
-from POSM.Viewer.LayerManager import LayerManager
-from POSM.utils import config
+from Osmapy.Changeset.Changeset import Changeset
+from Osmapy.Changeset.ChangesetForm import ChangesetForm
+from Osmapy.ElementsLoader.ElementsLoader import ElementsLoader
+from Osmapy.Viewer import Viewer
+from Osmapy.Viewer.ElementViewer import ElementViewer
+from Osmapy.Viewer.LayerManager import LayerManager
+from Osmapy.utils import config
 
 
 class Main(QMainWindow):
-    """ MainWindow which contains all widgets of POSM.
+    """ MainWindow which contains all widgets of Osmapy.
     """
 
     def __init__(self, parent=None):
         super(Main, self).__init__(parent)
-        self.setWindowTitle("POSM")
+        self.setWindowTitle("Osmapy")
         # All widgets should be destryed when the main window is closed. This the widgets can use the destroyed widget
         # to allow clean up. E.g. save the database of the TileLoader.
         self.setAttribute(QtCore.Qt.WA_DeleteOnClose, True)
@@ -68,14 +68,14 @@ class Main(QMainWindow):
             self.toolbar.addAction("Open Configuration", partial(call, ["xdg-open", str(config.path_config)]))
         self.addToolBar(self.toolbar)
 
-        self.statusBar().showMessage("Welcome to POSM!")
+        self.statusBar().showMessage("Welcome to Osmapy!")
 
 
 def main():
-    # Staring point of POSM
+    # Staring point of Osmapy
     app = QApplication()
     app.setWindowIcon(QIcon("./assets/appicon.png"))
-    app.setApplicationName("POSM")
+    app.setApplicationName("Osmapy")
     main_window = Main()
     main_window.show()
     sys.exit(app.exec_())

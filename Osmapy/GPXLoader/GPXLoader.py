@@ -3,7 +3,7 @@ from PySide2 import QtCore
 from PySide2.QtCore import QLine
 from PySide2.QtGui import QColor, QPen
 
-from POSM.utils.Point import Point
+from Osmapy.utils.Point import Point
 
 
 class GPXLoader:
