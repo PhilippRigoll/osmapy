@@ -41,8 +41,6 @@ The following Features are already implemented:
 
 ## Installation
 
-Maybe you have to install the  [Build Tools for Visual Studio](https://visualstudio.microsoft.com/downloads/) on Windows.
-
 The editor can be easily installed using pip:
 ```
 pip3 install osmapy
@@ -52,6 +50,18 @@ After installation run in the commandline:
 ```
 osmapy
 ```
+
+> :warning: **Windows**  
+> Python must be added to your PATH variable. If you have not chosen to do this while the installation of Python.
+> You have two options to achieve this:  
+> 1. Re-run the Python installer, select Modify, go to the next tab and enable the option "Add Python to environment variables"
+> 2. Manually modify the PATH variable and add the path where osmapy is installed. In the most cases that's something like
+> `C:\Users\USERNAME\AppData\Local\Programs\Python\Python38-32\Scripts\`. 
+
+> :warning: **Windows**  
+> Maybe you have to install the [Build Tools for Visual Studio](https://visualstudio.microsoft.com/downloads/) on Windows.
+> If the installation of Osmapy fails while installing numpy this is suggested by the error message.
+
 
 ## Development and Testing
 
