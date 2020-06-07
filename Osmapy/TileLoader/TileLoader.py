@@ -79,8 +79,12 @@ class TileLoader:
             tile (Tile): tile object of the tile which should be loaded.
 
         Returns:
-            str: path where the slippy tile will be saved after loading from a worker
+            str: path where the slippy tile will be saved after loading from a worker. Returns None if the tile cannot
+            exist.
         """
+        if not tile.check_existance():
+            return None
+
         with self.lock:
             if tile.name not in self.cache_json:    # load tile if it is not already in the cache database
                 # set set state of the tile to loading and save the current time to allow loading retries after a
@@ -153,6 +157,8 @@ class TileLoader:
         for a in range(-num_x, num_x + 1):
             for b in range(-num_y, num_y + 1):
                 tile = Tile.from_num(main_tile.xtile + a, main_tile.ytile + b, main_tile.zoom)
+                if not tile.check_existance():
+                    continue
                 path_image = self.get_tile(tile)
 
                 # try:

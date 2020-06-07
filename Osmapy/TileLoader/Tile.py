@@ -52,3 +52,14 @@ class Tile:
         """
         lat, lon = calc.num2deg(xtile, ytile, zoom)
         return cls(lat, lon, zoom)
+
+    def check_existance(self):
+        """ Checks if the tilenumbers are valid and if the tile can exists on a slippy tile server.
+
+        Returns:
+            bool: True if tile can exists, False if not
+        """
+        # these bounds are given by the mercator projection
+        if 0 <= self.xtile <= 2**self.zoom and 0 <= self.ytile <= 2**self.zoom:
+            return True
+        return False
