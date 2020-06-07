@@ -182,7 +182,13 @@ class Viewer(QDialog):
                 self.start_y = self.y
             else:
                 moved = event.globalPos() - self.start
-                self.set_xy(self.start_x - moved.x() / self.scale_x, self.start_y + moved.y() / self.scale_y)
+                set_x=self.start_x - moved.x() / self.scale_x
+                set_y=self.start_y + moved.y() / self.scale_y
+
+                set_x = np.clip(set_x, -179.999999, 179.999999) #TODO Prevent map from disappearing when x or y = 180 or -180
+                set_y = np.clip(set_y, -179.999999, 179.999999)
+
+                self.set_xy(set_x, set_y)
                 self.update()
 
     def mouseReleaseEvent(self, event):
