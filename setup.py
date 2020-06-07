@@ -1,10 +1,10 @@
 import setuptools
 
-setuptools.setup(name="Osmapy",
+setuptools.setup(name="osmapy",
                  author="Philipp Rigoll",
-                 version="0.0.1.0",
+                 version="0.0.1.2",
                  author_email="philipp@rigoll.de",
-                 url="https://github.com/PhilippRigoll/Osmapy",
+                 url="https://github.com/PhilippRigoll/osmapy",
                  packages=setuptools.find_packages(),
                  include_package_data=True,
                  install_requires=[
@@ -20,5 +20,5 @@ setuptools.setup(name="Osmapy",
                  ],
                  python_requires=">=3.6",
                  entry_points={
-                     "console_scripts": ["Osmapy=Osmapy.main:main"]
+                     "console_scripts": ["osmapy=osmapy.main:main"]
                  })

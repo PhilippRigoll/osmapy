@@ -45,12 +45,12 @@ Maybe you have to install the  [Build Tools for Visual Studio](https://visualstu
 
 The editor can be easily installed using pip:
 ```
-pip3 install Osmapy
+pip3 install osmapy
 ``` 
 
 After installation run in the commandline:
 ```
-Osmapy
+osmapy
 ```
 
 ## Development and Testing

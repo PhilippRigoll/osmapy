@@ -8,11 +8,11 @@ from PySide2 import QtCore
 from PySide2.QtGui import QPainter, QColor, QPen
 from PySide2.QtWidgets import (QDialog, QApplication)
 
-from Osmapy.GPXLoader.GPXLoader import GPXLoader
-from Osmapy.TileLoader import TileLoader, Tile
-from Osmapy.Viewer.OSMCopyright import OSMCopyright
-from Osmapy.utils import calc
-from Osmapy.utils.config import config
+from osmapy.GPXLoader.GPXLoader import GPXLoader
+from osmapy.TileLoader import TileLoader, Tile
+from osmapy.Viewer.OSMCopyright import OSMCopyright
+from osmapy.utils import calc
+from osmapy.utils.config import config
 
 
 class Viewer(QDialog):

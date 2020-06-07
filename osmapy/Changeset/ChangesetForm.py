@@ -3,7 +3,7 @@
 import lxml.etree as ET
 from PySide2.QtWidgets import QDialog, QGridLayout, QLabel, QTextEdit, QLineEdit, QPushButton, QMessageBox
 
-from Osmapy.utils.config import config
+from osmapy.utils.config import config
 
 
 class ChangesetForm(QDialog):

@@ -3,7 +3,7 @@
 import lxml.etree as ET
 import requests
 
-from Osmapy.utils.config import config
+from osmapy.utils.config import config
 
 
 class Changeset:

@@ -2,8 +2,8 @@
 
 import numpy as np
 
-from Osmapy.utils import calc
-from Osmapy.utils.config import config
+from osmapy.utils import calc
+from osmapy.utils.config import config
 
 
 class Tile:

@@ -15,8 +15,8 @@ import requests
 from PIL import Image
 from PySide2.QtGui import QPixmap
 
-from Osmapy.TileLoader.Tile import Tile
-from Osmapy.utils.config import config
+from osmapy.TileLoader.Tile import Tile
+from osmapy.utils.config import config
 
 
 class TileLoader:

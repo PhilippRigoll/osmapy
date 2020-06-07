@@ -8,13 +8,13 @@ from PySide2 import QtCore
 from PySide2.QtGui import QIcon
 from PySide2.QtWidgets import (QApplication, QMainWindow, QToolBar, QDockWidget)
 
-from Osmapy.Changeset.Changeset import Changeset
-from Osmapy.Changeset.ChangesetForm import ChangesetForm
-from Osmapy.ElementsLoader.ElementsLoader import ElementsLoader
-from Osmapy.Viewer import Viewer
-from Osmapy.Viewer.ElementViewer import ElementViewer
-from Osmapy.Viewer.LayerManager import LayerManager
-from Osmapy.utils import config
+from osmapy.Changeset.Changeset import Changeset
+from osmapy.Changeset.ChangesetForm import ChangesetForm
+from osmapy.ElementsLoader.ElementsLoader import ElementsLoader
+from osmapy.Viewer import Viewer
+from osmapy.Viewer.ElementViewer import ElementViewer
+from osmapy.Viewer.LayerManager import LayerManager
+from osmapy.utils import config
 
 
 class Main(QMainWindow):

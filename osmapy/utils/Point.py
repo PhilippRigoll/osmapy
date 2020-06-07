@@ -2,7 +2,7 @@
 
 import numpy as np
 
-from Osmapy.utils import calc
+from osmapy.utils import calc
 
 
 class Point:
