@@ -7,7 +7,7 @@ from PySide2 import QtCore
 from PySide2.QtGui import QColor, QPen
 from PySide2.QtWidgets import QMessageBox
 
-from osmapy.ElementsLoader import Node
+from osmapy.ElementsLoader import Node, Way
 from osmapy.utils import calc
 from osmapy.utils.config import config
 
@@ -19,6 +19,7 @@ class ElementsLoader:
     def __init__(self):
         self.elements_copy = dict()  # copy of elements to find changes
         self.elements = dict()
+        self.ways = dict()
         self.headers = {"Accept": "application/json", "User-Agent": config.user_agent}
 
         self.selected_node = None
@@ -31,6 +32,7 @@ class ElementsLoader:
         self.new_node_counter = -1
         self.elements_copy = dict()
         self.elements = dict()
+        self.ways = dict()
 
     def load(self, west, north, east, south):
         """ This function loads all node elements from a given bounding box. The function returns all nodes loaded with
@@ -56,6 +58,8 @@ class ElementsLoader:
             self.elements_copy = {**self.elements_copy, **nodes_copy}
             nodes = {raw["id"]: Node.Node(raw) for raw in result_json["elements"].copy() if raw["type"] == "node"}
             self.elements = {**self.elements, **nodes}  # merge old and new nodes
+
+            self.ways = {raw["id"]: Way.Way(raw) for raw in result_json["elements"].copy() if raw["type"] == "way"}
         else:
             box = QMessageBox()
             box.setWindowTitle("Error")
@@ -97,3 +101,15 @@ class ElementsLoader:
                     qpainter.setPen(QPen(QColor(QtCore.Qt.red), 2))
                     size = 10
                     qpainter.drawRect(xscreen - size / 2, yscreen - size / 2, size, size)
+
+        for way in self.ways.values():
+            qpainter.setBrush(QColor(QtCore.Qt.blue))
+            qpainter.setPen(QPen(QColor(QtCore.Qt.black), 1))
+            for node_id_a, node_id_b in zip(way.data["nodes"][:-1], way.data["nodes"][1:]):
+                node_a = self.elements[node_id_a]
+                node_b = self.elements[node_id_b]
+                x_a, y_a = calc.deg2xy(float(node_a.data["lat"]), float(node_a.data["lon"]))
+                xscreen_a, yscreen_a = viewer.xy2screen(x_a, y_a)
+                x_b, y_b = calc.deg2xy(float(node_b.data["lat"]), float(node_b.data["lon"]))
+                xscreen_b, yscreen_b = viewer.xy2screen(x_b, y_b)
+                qpainter.drawLine(xscreen_a, yscreen_a, xscreen_b, yscreen_b)
