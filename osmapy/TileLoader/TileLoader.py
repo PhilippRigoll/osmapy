@@ -32,6 +32,7 @@ class TileLoader:
         """
         self.name = config.slippy_tiles[config_id].name
         self.urls = config.slippy_tiles[config_id].urls
+        self.enabled = config.slippy_tiles[config_id].enabled
 
         self.path_cache = pathlib.Path(__file__).parent / pathlib.Path(f"../../cache/{self.name}")
         self.viewer = viewer
@@ -40,8 +41,10 @@ class TileLoader:
 
         self.queue = queue.LifoQueue()
         self.lock = multiprocessing.Lock()
-        for _ in range(min(2, multiprocessing.cpu_count())):    # only two download threads are allowed
-            threading.Thread(target=self.worker, daemon=True).start()
+
+        if self.enabled:
+            for _ in range(min(2, multiprocessing.cpu_count())):    # only two download threads are allowed
+                threading.Thread(target=self.worker, daemon=True).start()
 
     def worker(self):
         """ Worker which downloads the tile, updates the cache database and saves the image. After this processed is
@@ -166,8 +169,10 @@ class TileLoader:
                     pic = QPixmap(str(path_image))
                 else:
                     pic = QPixmap(viewer.asset_error_image)
-                pic = pic.scaled(config.image_size, config.image_size)
-                qpainter.drawTiledPixmap(
-                    -offset_x + a * config.image_size + viewer.frameGeometry().width() * 0.5 - config.image_size * 0.5,
-                    offset_y + b * config.image_size + viewer.frameGeometry().height() * 0.5 - config.image_size * 0.5,
-                    config.image_size, config.image_size, pic)
+
+                if self.enabled:
+                    pic = pic.scaled(config.image_size, config.image_size)
+                    qpainter.drawTiledPixmap(
+                        -offset_x + a * config.image_size + viewer.frameGeometry().width() * 0.5 - config.image_size * 0.5,
+                        offset_y + b * config.image_size + viewer.frameGeometry().height() * 0.5 - config.image_size * 0.5,
+                        config.image_size, config.image_size, pic)
