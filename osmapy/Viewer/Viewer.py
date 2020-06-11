@@ -54,7 +54,7 @@ class Viewer(QDialog):
 
         self.layers = self.parent.layer_manager
         for config_id, tile_loader in enumerate(self.tile_loaders):
-            self.layers.add_layer(tile_loader, config.slippy_tiles[config_id].name)
+            self.layers.add_layer(tile_loader, config.slippy_tiles[config_id].name, config.slippy_tiles[config_id].enabled)
         self.layers.add_layer(self.elements_loader, "OSM Nodes")
 
         self.mode = "normal"  # mode for clicking events

@@ -32,7 +32,6 @@ class TileLoader:
         """
         self.name = config.slippy_tiles[config_id].name
         self.urls = config.slippy_tiles[config_id].urls
-        self.enabled = config.slippy_tiles[config_id].enabled
 
         self.path_cache = pathlib.Path(__file__).parent / pathlib.Path(f"../../cache/{self.name}")
         self.viewer = viewer
@@ -42,9 +41,8 @@ class TileLoader:
         self.queue = queue.LifoQueue()
         self.lock = multiprocessing.Lock()
 
-        if self.enabled:
-            for _ in range(min(2, multiprocessing.cpu_count())):    # only two download threads are allowed
-                threading.Thread(target=self.worker, daemon=True).start()
+        for _ in range(min(2, multiprocessing.cpu_count())):    # only two download threads are allowed
+            threading.Thread(target=self.worker, daemon=True).start()
 
     def worker(self):
         """ Worker which downloads the tile, updates the cache database and saves the image. After this processed is
@@ -170,9 +168,8 @@ class TileLoader:
                 else:
                     pic = QPixmap(viewer.asset_error_image)
 
-                if self.enabled:
-                    pic = pic.scaled(config.image_size, config.image_size)
-                    qpainter.drawTiledPixmap(
-                        -offset_x + a * config.image_size + viewer.frameGeometry().width() * 0.5 - config.image_size * 0.5,
-                        offset_y + b * config.image_size + viewer.frameGeometry().height() * 0.5 - config.image_size * 0.5,
-                        config.image_size, config.image_size, pic)
+                pic = pic.scaled(config.image_size, config.image_size)
+                qpainter.drawTiledPixmap(
+                    -offset_x + a * config.image_size + viewer.frameGeometry().width() * 0.5 - config.image_size * 0.5,
+                    offset_y + b * config.image_size + viewer.frameGeometry().height() * 0.5 - config.image_size * 0.5,
+                    config.image_size, config.image_size, pic)
