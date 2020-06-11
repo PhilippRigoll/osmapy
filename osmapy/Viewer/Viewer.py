@@ -24,7 +24,8 @@ class Viewer(QDialog):
 
         self.tile_loaders = []
         for config_id in range(len(config.slippy_tiles)):
-            self.tile_loaders.append(TileLoader.TileLoader(self, config_id))
+            if config.slippy_tiles[config_id].enabled:
+                self.tile_loaders.append(TileLoader.TileLoader(self, config_id))
         self.parent = parent
         self.element_viewer = self.parent.element_viewer
 
