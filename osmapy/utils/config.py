@@ -13,7 +13,11 @@ path_base = pathlib.Path(__file__).parent
 path_config = path_base / pathlib.Path("../config.txt")
 
 with open(path_config, "r") as file:
-    config = EasyDict(yaml.safe_load(file))
+    try:
+        config = EasyDict(yaml.safe_load(file))
+    except:
+        print("Something went wrong while loading your config file. Please check it for format errors.")
+        exit()
 
 config.image_size = 256     # tile size
 config.retry_time_tile = 4  # Wait 4 seconds before retry to load a slippy tile
