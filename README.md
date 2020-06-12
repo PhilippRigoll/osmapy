@@ -1,5 +1,7 @@
 # Osmapy - Python Editor for OpenStreetMap Data
 
+![Logo](osmapy/assets/appicon.png)
+
 May I introduce you to __Osmapy__, the Editor for [OpenStreetMap](https://www.openstreetmap.org) data written in Python.
 This should become the new state of the art editor for OpenStreetMap.
 In contrast to the other common OSM editors this editor is based on Python.
