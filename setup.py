@@ -16,7 +16,8 @@ setuptools.setup(name="osmapy",
                      "lxml",
                      "requests",
                      "gpxpy",
-                     "dataclasses;python_version<'3.7'"
+                     "dataclasses;python_version<'3.7'",
+                     "cerberus"
                  ],
                  python_requires=">=3.6",
                  entry_points={
