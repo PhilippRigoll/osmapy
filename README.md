@@ -9,7 +9,8 @@ Python is modern, has a huge user base and is battery-included.
 This allows everyone to contribute to this project.
 Osmapy uses the widespread, powerful and freshly-looking Qt-framework.
 
-OpenStreetMap is a trademark of the OpenStreetMap Foundation, and is used with their permission. Osmapy is not endorsed by or affiliated with the OpenStreetMap Foundation.
+*OpenStreetMap and the OpenStreetMap Logo are a trademarks of the OpenStreetMap Foundation, and are used with their permission. Osmapy is not endorsed by or affiliated with the OpenStreetMap Foundation.  
+The Python Logo is a trademarks of the Python Software Foundation, and is used with their permission. Osmapy is not endorsed by or affiliated with the Python Software Foundation.*
 
 ![example](examples/example.png)
 
