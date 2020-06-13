@@ -82,6 +82,9 @@ osm_api_url: https://master.apis.dev.openstreetmap.org
  - Move selected Node with arrow keys
  - Remove OSM tag: click on the key of the tag
  - Drop GPX file into window to load it
+ 
+# Contributing
+All contributions are welcome!
 
 # License
 This software is released under the terms of the [GNU General Public License v3.0](LICENSE).
