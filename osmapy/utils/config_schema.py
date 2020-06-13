@@ -1,4 +1,4 @@
-{
+schema = {
     'osm_api_url': {
         'required': True,
         'type': 'string'
@@ -36,7 +36,6 @@
         'nullable': True
     },
 
-
     'slippy_tiles': {
         'required': True,
         'type': 'list',
@@ -44,22 +43,22 @@
             'type': 'dict',
             'schema': {
                 'name': {
-                'required': True,
-                'type': 'string',
+                    'required': True,
+                    'type': 'string',
                 },
                 'enabled': {
-                'required': True,
-                'type': 'boolean',
+                    'required': True,
+                    'type': 'boolean',
                 },
                 'urls': {
-                'required': True,
-                'type': 'list',
-                'schema': {
-                    'type': 'string'
+                    'required': True,
+                    'type': 'list',
+                    'schema': {
+                        'type': 'string'
                     }
                 }
             }
-            
+
         }
     }
 }
