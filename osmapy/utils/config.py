@@ -16,7 +16,6 @@ from osmapy.utils.config_schema import schema
 
 path_base = pathlib.Path(__file__).parent
 path_config = path_base / pathlib.Path("../config.txt")
-path_schema = path_base / pathlib.Path("schema.py")
 
 with open(path_config, "r") as file:
     v = Validator(schema)
