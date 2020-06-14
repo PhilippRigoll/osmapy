@@ -28,7 +28,7 @@ with open(path_config, "r") as file:
             box = QMessageBox()
             box.setWindowTitle("Configuration Error")
             errdump = json.dumps(v.errors, sort_keys=True, indent=3)
-            errdump = re.sub("( *{\n)|(\s*\[)|(\s*\]\s*)|(\s*\})|(})", "", errdump)
+            errdump = re.sub('( *{\n)|(\s*\[)|(\s*\]\s*)|(\s*\})|(})|"', "", errdump)
             box.setText(f"There are errors in your configuration file.\n{errdump}")
             box.setIcon(QMessageBox.Icon.Warning)
             box.show()
