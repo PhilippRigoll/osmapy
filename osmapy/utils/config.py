@@ -4,10 +4,10 @@
 configurations are hardcoded here.
 """
 
-import pathlib
-import sys
 import json
+import pathlib
 import re
+import sys
 
 import yaml
 from PySide2.QtWidgets import QMessageBox, QApplication
@@ -29,7 +29,10 @@ with open(path_config, "r") as file:
             box.setWindowTitle("Configuration Error")
             errdump = json.dumps(v.errors, sort_keys=True, indent=3)
             errdump = re.sub('( *{\n)|(\s*\[)|(\s*\]\s*)|(\s*\})|(})|"', "", errdump)
-            box.setText(f"There are errors in your configuration file.\n{errdump}")
+            box.setText(f"There are errors in your configuration file.\n\n"
+                        f"{errdump}\n\n"
+                        f"The path of the configuration file should be:\n"
+                        f"{path_config.resolve()}")
             box.setIcon(QMessageBox.Icon.Warning)
             box.show()
             sys.exit(app.exec_())
