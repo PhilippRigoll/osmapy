@@ -6,6 +6,8 @@ configurations are hardcoded here.
 
 import pathlib
 import sys
+import json
+import re
 
 import yaml
 from PySide2.QtWidgets import QMessageBox, QApplication
@@ -15,7 +17,7 @@ from easydict import EasyDict
 from osmapy.utils.config_schema import schema
 
 path_base = pathlib.Path(__file__).parent
-path_config = path_base / pathlib.Path("../config.txt")
+path_config = path_base / pathlib.Path("../config_custom.txt")
 
 with open(path_config, "r") as file:
     v = Validator(schema)
@@ -25,7 +27,9 @@ with open(path_config, "r") as file:
             app = QApplication()
             box = QMessageBox()
             box.setWindowTitle("Configuration Error")
-            box.setText(f"There are errors in your configuration file.\n{v.errors}")
+            errdump = json.dumps(v.errors, sort_keys=True, indent=3)
+            errdump = re.sub("( *{\n)|(\s*\[)|(\s*\]\s*)|(\s*\})|(})", "", errdump)
+            box.setText(f"There are errors in your configuration file.\n{errdump}")
             box.setIcon(QMessageBox.Icon.Warning)
             box.show()
             sys.exit(app.exec_())
