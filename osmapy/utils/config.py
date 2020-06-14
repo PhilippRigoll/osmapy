@@ -17,7 +17,7 @@ from easydict import EasyDict
 from osmapy.utils.config_schema import schema
 
 path_base = pathlib.Path(__file__).parent
-path_config = path_base / pathlib.Path("../config_custom.txt")
+path_config = path_base / pathlib.Path("../config.txt")
 
 with open(path_config, "r") as file:
     v = Validator(schema)
