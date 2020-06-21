@@ -286,6 +286,16 @@ class Viewer(QDialog):
                 self.element_viewer.set_node(self.elements_loader.elements[node_id])
                 self.update()
 
+        # Zooming
+        if event.key() == QtCore.Qt.Key_Plus:
+            if self.zoom < 19:
+                self.set_zoom(self.zoom + 1)
+                self.update()
+        if event.key() == QtCore.Qt.Key_Minus:
+            if self.zoom > 0:
+                self.set_zoom(self.zoom - 1)
+                self.update()
+
     def load_elements(self):
         """ Start loading OSM elements from the api which belong in the current map view.
         """
