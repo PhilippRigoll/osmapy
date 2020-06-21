@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import ctypes
 import os
 import pathlib
 import sys
@@ -25,7 +26,10 @@ class Main(QMainWindow):
     def __init__(self, parent=None):
         super(Main, self).__init__(parent)
         self.setWindowTitle("Osmapy")
-        # All widgets should be destryed when the main window is closed. This the widgets can use the destroyed widget
+        path_base = pathlib.Path(__file__).parent
+        icon_path = str(path_base / pathlib.Path("assets/appicon.png"))
+        self.setWindowIcon(QIcon(str(icon_path)))
+        # All widgets should be destroyed when the main window is closed. This the widgets can use the destroyed widget
         # to allow clean up. E.g. save the database of the TileLoader.
         self.setAttribute(QtCore.Qt.WA_DeleteOnClose, True)
         self.resize(config.config.window_size[0], config.config.window_size[1])
@@ -75,10 +79,10 @@ class Main(QMainWindow):
 def main():
     # Staring point of Osmapy
     app = QApplication()
-    path_base = pathlib.Path(__file__).parent
-    icon_path = str(path_base / pathlib.Path("assets/appicon.png"))
-    app.setWindowIcon(QIcon(str(icon_path)))
     app.setApplicationName("Osmapy")
+    # show the icon in the windows taskbar
+    if os.name == "nt":
+        ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(u"osmapy")
     main_window = Main()
     main_window.show()
     sys.exit(app.exec_())
