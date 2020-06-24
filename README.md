@@ -88,4 +88,6 @@ All contributions are welcome!
 
 # License
 This software is released under the terms of the [GNU General Public License v3.0](LICENSE).
+
+The presets used are a fork of the [iD editor](https://github.com/openstreetmap/iD) presets. The presets are under the [ISC License](osmapy/assets/presets/LICENSE.md).
  

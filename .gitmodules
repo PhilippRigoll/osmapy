@@ -1,0 +1,3 @@
+[submodule "osmapy/assets/presets"]
+	path = osmapy/assets/presets
+	url = https://github.com/PhilippRigoll/Presets
