@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from string import Template
-
+import numpy as np
 import requests
 from PySide2 import QtCore
 from PySide2.QtGui import QColor, QPen
@@ -11,7 +11,6 @@ from osmapy.ElementsLoader import Node
 from osmapy.utils import calc
 from osmapy.utils.config import config
 
-
 class ElementsLoader:
     """ This class provides a loader for OSM elements from the OSM server.
     """
@@ -20,9 +19,11 @@ class ElementsLoader:
         self.elements_copy = dict()  # copy of elements to find changes
         self.elements = dict()
         self.headers = {"Accept": "application/json", "User-Agent": config.user_agent}
-
+        self.x_coords = []
+        self.y_coords = []
         self.selected_node = None
         self.new_node_counter = -1
+        self.new_elements_loaded = False
 
     def clear(self):
         """ Reset the elements dicts and the counter
@@ -56,6 +57,10 @@ class ElementsLoader:
             self.elements_copy = {**self.elements_copy, **nodes_copy}
             nodes = {raw["id"]: Node.Node(raw) for raw in result_json["elements"].copy() if raw["type"] == "node"}
             self.elements = {**self.elements, **nodes}  # merge old and new nodes
+            for elem_key in self.elements:
+                self.elements[elem_key].data["lat"] = float(self.elements[elem_key].data["lat"])
+                self.elements[elem_key].data["lon"] = float(self.elements[elem_key].data["lon"])
+            self.new_elements_loaded = True
         else:
             box = QMessageBox()
             box.setWindowTitle("Error")
@@ -82,18 +87,39 @@ class ElementsLoader:
             alpha (float): opacity to draw
         """
         qpainter.setOpacity(alpha)
-        for elem in self.elements.values():
-            qpainter.setBrush(QColor(QtCore.Qt.blue))
-            qpainter.setPen(QPen(QColor(QtCore.Qt.black), 1))
-            if elem.data["type"] == "node":
-                x, y = calc.deg2xy(float(elem.data["lat"]), float(elem.data["lon"]))
-                xscreen, yscreen = viewer.xy2screen(x, y)
+        
+        if self.new_elements_loaded: 
+            lats = np.array([x.data["lat"] for x in self.elements.values() if x.data["type"] == "node"])
+            lons = np.array([x.data["lon"] for x in self.elements.values() if x.data["type"] == "node"])
+            self.lons = lats
+            x = lons
+            y =  180.0 / np.pi * np.log(np.tan(np.pi / 4.0 + lats * (np.pi / 180.0) / 2.0))
+            self.y_coords = y
+            self.x_coords = x
+        else:
+            x = np.array(self.x_coords)
+            y = np.array(self.y_coords)  
+                  
+        xscreen = ((x - viewer.x) * viewer.scale_x + viewer.frameGeometry().width() / 2) -3
+        yscreen = (-(y - viewer.y) * viewer.scale_y + viewer.frameGeometry().height() / 2) -3
+        
+        coords = np.column_stack((xscreen,yscreen))
+        
+        qpainter.setBrush(QColor(QtCore.Qt.blue))
+        qpainter.setPen(QPen(QColor(QtCore.Qt.black), 1))
+        
+        for elem in coords:
+            size = 6
+            qpainter.drawEllipse(elem[0] , elem[1], size, size)
 
-                size = 6
-                qpainter.drawEllipse(xscreen - size / 2, yscreen - size / 2, size, size)
-
-                if self.selected_node and elem.id == self.selected_node:
-                    qpainter.setBrush(QColor(0, 0, 0, 0))
-                    qpainter.setPen(QPen(QColor(QtCore.Qt.red), 2))
-                    size = 10
-                    qpainter.drawRect(xscreen - size / 2, yscreen - size / 2, size, size)
+        if self.selected_node:
+            selected = self.elements[self.selected_node]
+            qpainter.setBrush(QColor(0, 0, 0, 0))
+            qpainter.setPen(QPen(QColor(QtCore.Qt.red), 2))
+            size = 10
+            x, y = calc.deg2xy(selected.data["lat"], selected.data["lon"])
+            xscreen, yscreen = viewer.xy2screen(x, y)
+            qpainter.drawRect(xscreen - size / 2, yscreen - size / 2, size, size)
+        
+        self.new_elements_loaded = False
+        
